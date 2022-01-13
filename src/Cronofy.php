@@ -580,6 +580,26 @@ class Cronofy
 
         return $this->httpDelete("/" . self::API_VERSION . "/calendars/" . $params['calendar_id'] . "/events", $postFields);
     }
+    
+    public function deleteEvents($params)
+    {
+        /*
+          calendar_id : The calendar_id of the calendar you wish the event to be removed from. REQUIRED
+
+          returns true on success, associative array of errors on failure
+         */
+        $postFields = [];
+        
+        if (!empty($params['calendar_ids'])) {
+            $postFields['calendar_ids'] = $params['calendar_ids'];
+        }
+        
+        if (!empty($params['delete_all'])) {
+            $postFields['delete_all'] = $params['delete_all'];
+        }
+
+        return $this->httpDelete("/" . self::API_VERSION . "/events", $postFields);
+    }
 
     public function deleteExternalEvent($params)
     {
