@@ -564,6 +564,9 @@ class Cronofy
         if (!empty($params['recurrence'])) {
             $postFields['recurrence'] = $params['recurrence'];
         }
+        if (!empty($params['url'])) {
+            $postFields['url'] = $params['url'];
+        }
 
         return $this->httpPost("/" . self::API_VERSION . "/calendars/" . $params['calendar_id'] . "/events", $postFields);
     }
